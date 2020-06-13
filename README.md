@@ -15,7 +15,7 @@ Será necessário instalar a biblioteca abaixo:
 ## Exemplo de funcionamento do código:
 Ao rodar a aplicação será apresentado uma interface gráfica com a tela do editor e dois menus:
 
-* Tela principal.
+* Tela principal:
 - Opção - New: O editor possibilita criar um novo arquivo do zero.
 - Opção - Open: O editor permite abrir outros arquivos já criados que estejam salvos na máquina ou em outros dispositivos.
 - Opção - Save: O editor permite salvar arquivos nas extensões de arquivo de texto que o usuários necessitar
@@ -25,7 +25,7 @@ Ao rodar a aplicação será apresentado uma interface gráfica com a tela do ed
 ![1](https://user-images.githubusercontent.com/40063504/84579245-aef7bd00-ada2-11ea-852c-e2aa71d02c5c.PNG)
 
 
-* Demonstração de uso.
+* Demonstração de uso:
 
 ![novo](https://user-images.githubusercontent.com/40063504/84579341-44934c80-ada3-11ea-8e36-dd5283290b45.gif)
 
@@ -48,7 +48,7 @@ You will need to install the library below:
 ## Example of code operation:
 When running the application, a graphical interface with the editor screen and two menus will be presented:
 
-* Main screen.
+* Main screen:
 - Option - New: The editor makes it possible to create a new file from scratch.
 - Option - Open: The editor allows you to open other files already created that are saved on the machine or on other devices.
 - Option - Save: The editor allows you to save files in the text file extensions that the user needs
@@ -58,6 +58,6 @@ When running the application, a graphical interface with the editor screen and t
 ![1](https://user-images.githubusercontent.com/40063504/84579245-aef7bd00-ada2-11ea-852c-e2aa71d02c5c.PNG)
 
 
-* Demonstration of use.
+* Demonstration of use:
 
 ![novo](https://user-images.githubusercontent.com/40063504/84579341-44934c80-ada3-11ea-8e36-dd5283290b45.gif)
