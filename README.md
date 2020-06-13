@@ -49,11 +49,11 @@ You will need to install the library below:
 When running the application, a graphical interface with the editor screen and two menus will be presented:
 
 * Main screen.
-** Option - New: The editor makes it possible to create a new file from scratch.
-** Option - Open: The editor allows you to open other files already created that are saved on the machine or on other devices.
-** Option - Save: The editor allows you to save files in the text file extensions that the user needs
-** Option - Save as: The editor allows you to save an existing file by renaming it.
-** Option - Exit: Button to exit the editor, being possible to exit using the common exit button on all screens.
+- Option - New: The editor makes it possible to create a new file from scratch.
+- Option - Open: The editor allows you to open other files already created that are saved on the machine or on other devices.
+- Option - Save: The editor allows you to save files in the text file extensions that the user needs
+- Option - Save as: The editor allows you to save an existing file by renaming it.
+- Option - Exit: Button to exit the editor, making it possible to exit using the common exit button on all screens.
 
 ![1](https://user-images.githubusercontent.com/40063504/84579245-aef7bd00-ada2-11ea-852c-e2aa71d02c5c.PNG)
 
