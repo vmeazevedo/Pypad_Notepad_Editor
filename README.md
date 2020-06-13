@@ -16,11 +16,11 @@ Será necessário instalar a biblioteca abaixo:
 Ao rodar a aplicação será apresentado uma interface gráfica com a tela do editor e dois menus:
 
 * Tela principal.
-** Opção - New: O editor possibilita criar um novo arquivo do zero.
-** Opção - Open: O editor permite abrir outros arquivos já criados que estejam salvos na máquina ou em outros dispositivos.
-** Opção - Save: O editor permite salvar arquivos nas extensões de arquivo de texto que o usuários necessitar
-** Opção - Save as: O editor permite salvar um arquivo existente renomeando ele.
-** Opção - Exit: Botão para sair do editor, sendo possível sair pelo botão de sair comum em todas as telas.
+- Opção - New: O editor possibilita criar um novo arquivo do zero.
+- Opção - Open: O editor permite abrir outros arquivos já criados que estejam salvos na máquina ou em outros dispositivos.
+- Opção - Save: O editor permite salvar arquivos nas extensões de arquivo de texto que o usuários necessitar
+- Opção - Save as: O editor permite salvar um arquivo existente renomeando ele.
+- Opção - Exit: Botão para sair do editor, sendo possível sair pelo botão de sair comum em todas as telas.
 
 ![1](https://user-images.githubusercontent.com/40063504/84579245-aef7bd00-ada2-11ea-852c-e2aa71d02c5c.PNG)
 
