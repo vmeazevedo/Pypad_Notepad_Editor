@@ -17,10 +17,37 @@ Ao rodar a aplicação será apresentado uma interface gráfica com a tela do ed
 
 * Tela principal.
 
-
-* Menu File.
-
-
-* Menu Help.
+![1](https://user-images.githubusercontent.com/40063504/84579245-aef7bd00-ada2-11ea-852c-e2aa71d02c5c.PNG)
 
 
+* Demonstração de uso.
+
+![novo](https://user-images.githubusercontent.com/40063504/84579341-44934c80-ada3-11ea-8e36-dd5283290b45.gif)
+
+
+
+# Pypad_Notepad_Editor
+The application was developed to give the user a simple but powerful text editor option.
+The editor was developed to perform all the essential functions of a common text editor, allowing:
+
+* Create new files.
+* Open .txt files already saved on the machine.
+* Write codes and save in .py extension.
+
+In some cases where the user has little or no access to programs such as word, notepad ++, among other editors, Pypad is a simple and functional option to assist the user in an immediate task.
+  
+## Requirements
+You will need to install the library below:
+* tkinter
+
+## Example of code operation:
+When running the application, a graphical interface with the editor screen and two menus will be presented:
+
+* Main screen.
+
+![1](https://user-images.githubusercontent.com/40063504/84579245-aef7bd00-ada2-11ea-852c-e2aa71d02c5c.PNG)
+
+
+* Demonstration of use.
+
+![novo](https://user-images.githubusercontent.com/40063504/84579341-44934c80-ada3-11ea-8e36-dd5283290b45.gif)
