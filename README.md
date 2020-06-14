@@ -27,7 +27,7 @@ Ao rodar a aplicação será apresentado uma interface gráfica com a tela do ed
 
 * Demonstração de uso:
 
-![novo](https://user-images.githubusercontent.com/40063504/84579341-44934c80-ada3-11ea-8e36-dd5283290b45.gif)
+![teste_pypad3](https://user-images.githubusercontent.com/40063504/84582406-f2adef00-adc1-11ea-9e19-b0ee207e0d73.gif)
 
 
 
@@ -60,4 +60,4 @@ When running the application, a graphical interface with the editor screen and t
 
 * Demonstration of use:
 
-![novo](https://user-images.githubusercontent.com/40063504/84579341-44934c80-ada3-11ea-8e36-dd5283290b45.gif)
+![teste_pypad3](https://user-images.githubusercontent.com/40063504/84582406-f2adef00-adc1-11ea-9e19-b0ee207e0d73.gif)
