@@ -1,125 +1,105 @@
-from tkinter import *
-from tkinter.ttk import *
-from tkinter.messagebox import *
-from tkinter.filedialog import *
+import os
+import tkinter as tk
+from tkinter import messagebox, filedialog
 
 class Notepad:
-    root=Tk()
+    def __init__(self, width=600, height=500):
+        # Janela principal
+        self.root = tk.Tk()
+        self.root.title("PyPad v1.0 - Notepad")
 
-    width = 200
-    height = 300
-    Textarea=Text(root)
-    Menubar=Menu(root,activebackground="purple",activeforeground="white",bg="pink",fg="black")
-    filemenu=Menu(Menubar, tearoff=0,activebackground="purple",activeforeground="white")
-    editmenu=Menu(Menubar, tearoff=0,activebackground="purple",activeforeground="white")
-    helpmenu=Menu(Menubar, tearoff=0,activebackground="purple",activeforeground="white")
+        self.width = width
+        self.height = height
+        self.file = None
 
-    scrollbar = Scrollbar(Textarea,activebackground="pink",bg="pink")
-    file=None
+        # Centralizar janela na tela
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+        x = int((screen_width - self.width) / 2)
+        y = int((screen_height - self.height) / 2)
+        self.root.geometry(f"{self.width}x{self.height}+{x}+{y}")
 
+        # Área de texto + scrollbar
+        self.text_area = tk.Text(self.root, wrap='word')
+        self.text_area.pack(expand=True, fill='both')
 
-    def __init__(self, **kwargs):
+        self.scrollbar = tk.Scrollbar(self.text_area)
+        self.scrollbar.pack(side='right', fill='y')
+        self.scrollbar.config(command=self.text_area.yview)
+        self.text_area.config(yscrollcommand=self.scrollbar.set)
 
-    #Seting window size
-        try:
-            self.width=kwargs['widths']
-        except KeyError:
-            pass
-        try:
-            self.height=kwargs["heights"]
-        except KeyError:
-            pass
+        # Menu
+        self.create_menu()
 
-    #Window text
-        self.root.title("Pypad v1.0 - Notepad")
-        screenwidth = self.root.winfo_screenwidth()
-        screenheight = self.root.winfo_screenheight()
-        left=(screenwidth/2) - (self.width/2)
-        top=(screenheight/2)- (self.height/2)
-        self.root.geometry('%dx%d+%d+%d'%(self.width,self.height,left,top))
+    def create_menu(self):
+        menubar = tk.Menu(self.root, bg="pink", fg="black", activebackground="purple", activeforeground="white")
 
-    #To make the text area auto resizable
-        self.root.grid_rowconfigure(0, weight=2)
-        self.root.grid_columnconfigure(0, weight=2)
-        self.Textarea.grid(sticky = N+E+S+W)
+        # Menu Arquivo
+        file_menu = tk.Menu(menubar, tearoff=0, activebackground="purple", activeforeground="white")
+        file_menu.add_command(label="New", command=self.new_file)
+        file_menu.add_command(label="Open", command=self.open_file)
+        file_menu.add_command(label="Save", command=self.save_file)
+        file_menu.add_command(label="Save As", command=self.save_as_file)
+        file_menu.add_separator()
+        file_menu.add_command(label="Exit", command=self.exit_app)
+        menubar.add_cascade(label="File", menu=file_menu)
 
-        #To open a new file and open and save
-        self.filemenu.add_command(label="New", command=self.newfile)
-        self.filemenu.add_command(label="Open", command=self.openfile)
-        self.filemenu.add_command(label="Save", command = self.savefile)
-        self.filemenu.add_command(label="Save as", command=self.saveasfile)
-        self.filemenu.add_separator()
-        self.filemenu.add_command(label="Exit",command=self.exitapp)
-        self.Menubar.add_cascade(label="File", menu=self.filemenu)
+        # Menu Ajuda
+        help_menu = tk.Menu(menubar, tearoff=0, activebackground="purple", activeforeground="white")
+        help_menu.add_command(label="About PyPad", command=self.show_about)
+        menubar.add_cascade(label="Help", menu=help_menu)
 
-        #Edit Menu
-        self.helpmenu.add_command(label="About Pypad",command=self.showhelp)
-        self.Menubar.add_cascade(label="Help", menu=self.helpmenu)
-        self.root.config(menu=self.Menubar)
-        self.scrollbar.pack(side=RIGHT, fill=Y)
-        self.scrollbar.config(command=self.Textarea.yview)
-        self.Textarea.config(yscrollcommand=self.scrollbar.set)
+        self.root.config(menu=menubar)
 
-#Functions
-    def exitapp(self):
+    # Ações do menu
+    def new_file(self):
+        self.root.title("PyPad v1.0 - Notepad")
+        self.file = None
+        self.text_area.delete(1.0, tk.END)
+
+    def open_file(self):
+        filepath = filedialog.askopenfilename(
+            defaultextension=".txt",
+            filetypes=[("Text Documents", "*.txt"), ("All Files", "*.*")]
+        )
+        if filepath:
+            self.file = filepath
+            self.root.title(f"{os.path.basename(filepath)} - Notepad")
+            with open(filepath, "r") as f:
+                self.text_area.delete(1.0, tk.END)
+                self.text_area.insert(1.0, f.read())
+
+    def save_file(self):
+        if not self.file:
+            self.save_as_file()
+        else:
+            with open(self.file, "w") as f:
+                f.write(self.text_area.get(1.0, tk.END))
+            self.root.title(f"{os.path.basename(self.file)} - Notepad")
+
+    def save_as_file(self):
+        filepath = filedialog.asksaveasfilename(
+            initialfile="Untitled.txt",
+            defaultextension=".txt",
+            filetypes=[("Text Documents", "*.txt"), ("All Files", "*.*")]
+        )
+        if filepath:
+            self.file = filepath
+            with open(filepath, "w") as f:
+                f.write(self.text_area.get(1.0, tk.END))
+            self.root.title(f"{os.path.basename(filepath)} - Notepad")
+
+    def exit_app(self):
         self.root.destroy()
 
-    def showhelp(self):
-        showinfo("PyPad", "Created by Vinícius Azevedo")
-
-    def openfile(self):
-        self.file=askopenfilename(defaultextension=".txt", filetypes=[("All Files","*.*"),("Text Documents","*.txt")])
-        if self.file =="":
-            self.file= None
-            print("EMPTY")
-        else:
-            self.root.title(os.path.basename(self.file[:-4]) + " --Notepad")
-            self.Textarea.delete(1.0 , END)
-            file=open(self.file, "r")
-            self.Textarea.insert(1.0, file.read())
-            file.close()
-
-    def newfile(self):
-            self.root.title("Pypad v1.0 - Notepad")
-            self.file = None
-            self.Textarea.delete(1.0,END)
-
-    def savefile(self):
-        if self.file == None:
-            self.file=asksaveasfilename(initialfile="Untitled.txt", defaultextension=".txt",filetypes=[("All Files","*.*"),("Text Documents","*.txt")])
-            if self.file == "":
-                self.file =None
-            else:
-                file = open(self.file,"w")
-                file.write(self.Textarea.get(1.0,END))
-                file.close()
-                self.root.title(os.path.basename(self.file)+"- Notepad")
-        else:
-            file=open(self.file, "w")
-            file.write(self.Textarea.get(1.0,END))
-            file.close()
-
-    def saveasfile(self):
-        if self.file == None:
-            self.file = asksaveasfilename(initialfile="Untitled.txt", defaultextension=".txt",
-                                          filetypes=[("All Files", "*.*"), ("Text Documents", "*.txt")])
-            if self.file=='':
-                self.file=None
-            else:
-                file=open(self.file,"w")
-                file.write(self.Textarea.get(1.0,END))
-                file.close()
-                self.root.title(os.path.basename(self.file)+"- Notepad")
-        else:
-            self.file = asksaveasfilename(initialfile="Untitled.txt", defaultextension=".txt",
-                                          filetypes=[("All Files", "*.*"), ("Text Documents", "*.txt")])
-            file = open(self.file, "w")
-            file.write(self.Textarea.get(1.0, END))
-            file.close()
-            self.root.title(os.path.basename(self.file) + "- Notepad")
+    def show_about(self):
+        messagebox.showinfo("About PyPad", "Created by Vinícius Azevedo")
 
     def run(self):
         self.root.mainloop()
 
-notepad=Notepad(widths=600, heights=500)
-notepad.run()
+
+# Execução
+if __name__ == "__main__":
+    app = Notepad(width=600, height=500)
+    app.run()
